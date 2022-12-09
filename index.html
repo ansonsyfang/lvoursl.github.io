@@ -154,28 +154,24 @@
 
 <section class="section">
   <div class="container is-max-desktop">
-    <h2 class="title is-3">On device rendering examples</h2>
+    <h2 class="title is-3">On-device rendering</h2>
 
-    <p>Some intro text</p>
+    <p>
+      These videos were recorded from Virtual / Mixed Reality headset with color passthrough capabilities.
+      We render reconstructed humans from ZJU-MoCap dataset with our custom shaders using TensoRF representation. Animation is done with linear blend skinning.
+    </p>
 
     <br>
 
     <div class="columns is-centered">
-      <!-- Visual Effects. -->
       <div class="column">
         <div class="content">
           <h4>Sequence 377</h4>
-          <!-- <video autoplay controls muted loop playsinline>
-            <source src="static/videos/377.mp4" type="video/mp4" width="20%" heights="20%">
-          </video> -->
           <video autoplay loop src="static/videos/377.mp4" data-canonical-src="static/videos/377.mp4" controls="controls" muted="muted" height="70%" width="70%">
 
           </video>
         </div>
       </div>
-      <!--/ Visual Effects. -->
-
-      <!-- Matting. -->
       <div class="column">
         <div class="columns is-centered">
           <div class="column content">
@@ -185,7 +181,6 @@
           </div>
         </div>
       </div>
-
       <div class="column">
         <div class="columns is-centered">
           <div class="column content">
@@ -197,20 +192,36 @@
       </div>
 
     </div>
-    <!--/ Matting. -->
 
-    <!-- Animation. -->
+    <h2 class="title is-3">WebGL demos</h2>
+    <p>We also ported our code to WebGL to show real-time rendering capabilities and
+       robustness of our rendering approach: it can run across most popular platforms. </p>
+    <br>
+
     <div class="columns is-centered">
-      <div class="column is-full-width">
-        <h2 class="title is-3">WebGL demos</h2>
+        <div class="column">
+          <div class="content">
+            <h4>Sequence 377</h4>
 
-        <p>Some intro text</p>
+          </div>
+        </div>
+        <div class="column">
+          <div class="columns is-centered">
+            <div class="column content">
+              <h4>Sequence 393</h4>
 
-        <br>
+            </div>
+          </div>
+        </div>
+        <div class="column">
+          <div class="columns is-centered">
+            <div class="column content">
+              <h4>Sequence 394</h4>
 
-      </div>
+            </div>
+          </div>
+        </div>
     </div>
-    <!--/ Animation. -->
 
 
   </div>
@@ -234,10 +245,10 @@
   <div class="container">
     <div class="content has-text-centered">
       <a class="icon-link"
-         href="https://homes.cs.washington.edu/~kpar/nerfies/videos/nerfies_paper.pdf">
+         href="">
         <i class="fas fa-file-pdf"></i>
       </a>
-      <a class="icon-link" href="https://github.com/keunhong" class="external-link" disabled>
+      <a class="icon-link" href="" class="external-link" disabled>
         <i class="fab fa-github"></i>
       </a>
     </div>
@@ -245,16 +256,10 @@
       <div class="column is-8">
         <div class="content">
           <p>
-            This website is licensed under a <a rel="license"
-                                                href="http://creativecommons.org/licenses/by-sa/4.0/">Creative
-            Commons Attribution-ShareAlike 4.0 International License</a>.
-          </p>
-          <p>
-            This means you are free to borrow the <a
-              href="https://github.com/nerfies/nerfies.github.io">source code</a> of this website,
-            we just ask that you link back to this page in the footer.
-            Please remember to remove the analytics code included in the header of the website which
-            you do not want on your website.
+            This website was build on a template from <a
+              href="https://github.com/nerfies/nerfies.github.io">nerfies</a> paper and is licensed under a <a rel="license"
+              href="http://creativecommons.org/licenses/by-sa/4.0/">Creative
+Commons Attribution-ShareAlike 4.0 International License</a>.
           </p>
         </div>
       </div>
