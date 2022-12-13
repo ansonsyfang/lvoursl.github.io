@@ -3,11 +3,21 @@
   <head>
     <meta charset="utf-8">
     <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
-    <title>Unity WebGL Player | TensoRF player</title>
+    <title>Unity WebGL Player | FastCapture</title>
     <link rel="shortcut icon" href="TemplateData/favicon.ico">
     <link rel="stylesheet" href="TemplateData/style.css">
+
+    <link rel="stylesheet" href="../../static/css/index.css">
+
+    <link rel="stylesheet" href="../../static/css/bulma.min.css">
+    <link rel="stylesheet" href="../../static/css/bulma-carousel.min.css">
+    <link rel="stylesheet" href="../../static/css/bulma-slider.min.css">
+    <link rel="stylesheet" href="../../static/css/fontawesome.all.min.css">
+    <link rel="stylesheet"
+          href="https://cdn.jsdelivr.net/gh/jpswalsh/academicons@1/css/academicons.min.css">
   </head>
   <body>
+
     <div id="unity-container" class="unity-desktop">
       <canvas id="unity-canvas" width=960 height=600></canvas>
       <div id="unity-loading-bar">
@@ -17,12 +27,25 @@
         </div>
       </div>
       <div id="unity-warning"> </div>
-      <div id="unity-footer">
+      <!-- <div id="unity-footer">
         <div id="unity-webgl-logo"></div>
         <div id="unity-fullscreen-button"></div>
-        <div id="unity-build-title">TensoRF player</div>
+
+            <a href="../../index.html" id="unity-build-title">Go back to FastCapture website</a>
+
+        <div id="unity-build-title">FastCapture</div>
+      </div> -->
+      <br>
+      <br>
+      <div class="container is-max-desktop">
+        <div class="columns is-centered has-text-centered">
+          <a href="../../index.html" id="unity-build-title">Go back to FastCapture website</a>
+        </div>
       </div>
+      <br>
     </div>
+
+
     <script>
       var container = document.querySelector("#unity-container");
       var canvas = document.querySelector("#unity-canvas");
@@ -63,7 +86,7 @@
         codeUrl: buildUrl + "/webgl-build-nondev-fast.wasm",
         streamingAssetsUrl: "StreamingAssets",
         companyName: "DefaultCompany",
-        productName: "TensoRF player",
+        productName: "FastCapture",
         productVersion: "1.0",
         showBanner: unityShowBanner,
       };
