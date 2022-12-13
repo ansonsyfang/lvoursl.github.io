@@ -6,6 +6,16 @@
     <title>Unity WebGL Player | FastCapture</title>
     <link rel="shortcut icon" href="TemplateData/favicon.ico">
     <link rel="stylesheet" href="TemplateData/style.css">
+
+
+    <link rel="stylesheet" href="../../static/css/index.css">
+
+    <link rel="stylesheet" href="../../static/css/bulma.min.css">
+    <link rel="stylesheet" href="../../static/css/bulma-carousel.min.css">
+    <link rel="stylesheet" href="../../static/css/bulma-slider.min.css">
+    <link rel="stylesheet" href="../../static/css/fontawesome.all.min.css">
+    <link rel="stylesheet"
+          href="https://cdn.jsdelivr.net/gh/jpswalsh/academicons@1/css/academicons.min.css">
   </head>
   <body>
     <div id="unity-container" class="unity-desktop">
@@ -17,11 +27,22 @@
         </div>
       </div>
       <div id="unity-warning"> </div>
-      <div id="unity-footer">
+      <!-- <div id="unity-footer">
         <div id="unity-webgl-logo"></div>
         <div id="unity-fullscreen-button"></div>
         <div id="unity-build-title">FastCapture</div>
+      </div> -->
+
+
+      <br>
+      <br>
+      <div class="container is-max-desktop">
+        <div class="columns is-centered has-text-centered">
+          <a href="../../index.html" id="unity-build-title">Go back to FastCapture website</a>
+        </div>
       </div>
+      <br>
+
     </div>
     <script>
       var container = document.querySelector("#unity-container");
@@ -106,9 +127,9 @@
           progressBarFull.style.width = 100 * progress + "%";
         }).then((unityInstance) => {
           loadingBar.style.display = "none";
-          fullscreenButton.onclick = () => {
-            unityInstance.SetFullscreen(1);
-          };
+          // fullscreenButton.onclick = () => {
+          //   unityInstance.SetFullscreen(1);
+          // };
         }).catch((message) => {
           alert(message);
         });
