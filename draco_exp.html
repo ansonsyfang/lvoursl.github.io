@@ -15,12 +15,11 @@
       import { OBJLoader } from "https://unpkg.com/three@0.125.2/examples/jsm/loaders/OBJLoader.js";
       import { MTLLoader } from "https://unpkg.com/three@0.125.2/examples/jsm/loaders/MTLLoader.js";
       import { TrackballControls } from "https://unpkg.com/three@0.125.2/examples/jsm/controls/TrackballControls.js";
+      import { DRACOLoader } from 'https://unpkg.com/three@0.125.2/examples/jsm/loaders/DRACOLoader.js';
 
-
-      //import {  } from "https://unpkg.com/three@0.138.0/examples/js/utils/BufferGeometryUtils.js";
 
     let NUM_FRAMES = 63;
-		let MODEL_PATH = 'models/a_corgi_playing_with_a_ball/';
+		let MODEL_PATH = 'models/a_corgi_playing_with_a_ball_drc/';
 		let ALBEDO_FORMAT = '.jpg';
 
 		let camera, scene, renderer, controls;
@@ -36,19 +35,24 @@
 			const textureLoader = new THREE.TextureLoader();
 			const objLoader = new OBJLoader();
 
+			const dracoLoader = new DRACOLoader();
+			dracoLoader.setDecoderPath('https://unpkg.com/three@0.125.2/examples/js/libs/draco/');
+			dracoLoader.preload();
+
 			for (let frameIndex = 0; frameIndex < NUM_FRAMES; frameIndex++) {
 				Promise.all([
 					textureLoader.loadAsync(MODEL_PATH + frameIndex + '_albedo' + ALBEDO_FORMAT),
-					objLoader.loadAsync(MODEL_PATH + frameIndex + '_mesh.obj'),
+					dracoLoader.loadAsync(MODEL_PATH + frameIndex + '_mesh.drc')
 				]).then((values) => {
 						var texture = values[0];
-						var obj = values[1];				
+						var obj = values[1];	
 
-						obj.name = 'loaded_mesh';
-						obj.children[0].material.map = texture;
-						obj.children[0].geometry.computeVertexNormals();
+						var mesh = new THREE.Mesh(obj);	
+						mesh.name = 'loaded_mesh';		
+					  mesh.material.map = texture;
+						mesh.geometry.computeVertexNormals();
 
-						frameIndexToObject[frameIndex] = obj;
+						frameIndexToObject[frameIndex] = mesh;
 
 						var element = document.getElementById('loadingBar');
 						if (element != null) {
@@ -106,7 +110,6 @@
 
 			if ((Date.now() - currTime > 62.5) && (Object.keys(frameIndexToObject).length == NUM_FRAMES)) {
 				currTime = Date.now();
-
 				scene.remove(scene.getObjectByName('loaded_mesh'));
 				scene.add(frameIndexToObject[currFrameIndex]);
 				currFrameIndex++;
