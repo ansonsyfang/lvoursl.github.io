@@ -8,13 +8,29 @@
 		  	left: 50%;
 		}
 	</style>
+	<meta http-equiv="Content-Type" content="text/html; charset=utf-8"/>
 </head>
   <body>
+		<script async src="https://unpkg.com/es-module-shims@1.3.6/dist/es-module-shims.js"></script>
+
+		<script type="importmap">
+		    {
+		        "imports": {
+		            "three": "https://unpkg.com/three@0.140.2/build/three.module.js",
+		            "three.examples": "https://unpkg.com/three@0.140.2/examples"
+		        }
+		    }
+		</script>
+
     <script type="module">
-    import * as THREE from "https://unpkg.com/three@0.125.2/build/three.module.js";
-    import { OBJLoader } from "https://unpkg.com/three@0.125.2/examples/jsm/loaders/OBJLoader.js";
-    import { MTLLoader } from "https://unpkg.com/three@0.125.2/examples/jsm/loaders/MTLLoader.js";
-    import { TrackballControls } from "https://unpkg.com/three@0.125.2/examples/jsm/controls/TrackballControls.js";
+    import * as THREE from "three"
+    import { OBJLoader } from "https://unpkg.com/three@0.140.2/examples/jsm/loaders/OBJLoader.js";
+    import { MTLLoader } from "https://unpkg.com/three@0.140.2/examples/jsm/loaders/MTLLoader.js";
+    import { TrackballControls } from "https://unpkg.com/three@0.140.2/examples/jsm/controls/TrackballControls.js";
+
+    import * as BufferGeometryUtils from "https://unpkg.com/three@0.140.2/examples/jsm/utils/BufferGeometryUtils.js";
+
+
 
     const urlSearchParams = new URLSearchParams(window.location.search);
 		const params = Object.fromEntries(urlSearchParams.entries());
@@ -46,7 +62,12 @@
 
 						obj.name = 'loaded_mesh';
 						obj.children[0].material.map = texture;
-						obj.children[0].geometry.computeVertexNormals();
+						obj.children[0].material.flatShading = false;
+						obj.children[0].material.smoothShading = true;
+						obj.children[0].material.shading = THREE.SmoothShading;
+
+						obj.children[0].geometry = BufferGeometryUtils.mergeVertices(obj.children[0].geometry);
+						obj.children[0].geometry.computeVertexNormals(true);
 
 						frameIndexToObject[frameIndex] = obj;
 
@@ -67,11 +88,11 @@
 			scene = new THREE.Scene();
 			scene.background = new THREE.Color( 0xffffff );
 
-			const ambientLight = new THREE.AmbientLight( 0xcccccc, 0.4 );
+			const ambientLight = new THREE.AmbientLight( 0xcccccc, 1.2 );
 			scene.add( ambientLight );
 
-			const pointLight = new THREE.PointLight( 0xffffff, 0.8 );
-			camera.add( pointLight );
+			// const pointLight = new THREE.PointLight( 0xffffff, 0.8 );
+			// camera.add( pointLight );
 			scene.add( camera );
 
 			renderer = new THREE.WebGLRenderer();
